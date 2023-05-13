@@ -3,8 +3,19 @@
 <%= render @country %>
 
 <div>
+  <%= link_to 'Add Region', country_regions_path(@country) %> |
   <%= link_to "Edit this country", edit_country_path(@country) %> |
   <%= link_to "Back to countries", countries_path %>
 
   <%= button_to "Destroy this country", @country, method: :delete %>
+  <h2>Regions </h2> 
+  <% for region in @country.regions %>
+  
+  <ul>
+  
+  <li><%= region.name %></li>
+  
+  </ul>
+  
+  <% end %>
 </div>

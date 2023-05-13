@@ -6,7 +6,7 @@
   <% @regions.each do |region| %>
     <%= render region %>
     <p>
-      <%= link_to "Show this region", country_region_path(@country) %>
+      <%= link_to "Show this region", [@country, @region] %>
     </p>
     <p><%= link_to 'Show Country', [@country] %></p>
   <% end %>
