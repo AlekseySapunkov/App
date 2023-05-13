@@ -1,0 +1,10 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @camping %>
+
+<div>
+  <%= link_to "Edit this camping", edit_camping_path(@camping) %> |
+  <%= link_to "Back to campings", campings_path %>
+
+  <%= button_to "Destroy this camping", @camping, method: :delete %>
+</div>

@@ -10,7 +10,30 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_05_13_071007) do
+ActiveRecord::Schema[7.0].define(version: 2023_05_13_111542) do
+  create_table "campings", force: :cascade do |t|
+    t.string "name"
+    t.text "body"
+    t.integer "country_id", null: false
+    t.integer "city_id", null: false
+    t.integer "region_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["city_id"], name: "index_campings_on_city_id"
+    t.index ["country_id"], name: "index_campings_on_country_id"
+    t.index ["region_id"], name: "index_campings_on_region_id"
+  end
+
+  create_table "cities", force: :cascade do |t|
+    t.string "name"
+    t.integer "region_id", null: false
+    t.integer "country_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["country_id"], name: "index_cities_on_country_id"
+    t.index ["region_id"], name: "index_cities_on_region_id"
+  end
+
   create_table "countries", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
@@ -25,5 +48,10 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_13_071007) do
     t.index ["country_id"], name: "index_regions_on_country_id"
   end
 
+  add_foreign_key "campings", "cities"
+  add_foreign_key "campings", "countries"
+  add_foreign_key "campings", "regions"
+  add_foreign_key "cities", "countries"
+  add_foreign_key "cities", "regions"
   add_foreign_key "regions", "countries"
 end
