@@ -1,0 +1,15 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Regions</h1>
+
+<div id="regions">
+  <% @regions.each do |region| %>
+    <%= render region %>
+    <p>
+      <%= link_to "Show this region", country_region_path(@country) %>
+    </p>
+    <p><%= link_to 'Show Country', [@country] %></p>
+  <% end %>
+</div>
+
+<%= link_to "New region", new_country_region_path(@country) %>
