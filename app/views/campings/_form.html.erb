@@ -1,4 +1,4 @@
-<%= form_with(model: camping) do |form| %>
+<%= form_with(model: [@country,@region,@city, camping]) do |form| %>
   <% if camping.errors.any? %>
     <div style="color: red">
       <h2><%= pluralize(camping.errors.count, "error") %> prohibited this camping from being saved:</h2>

@@ -3,8 +3,8 @@
 <%= render @camping %>
 
 <div>
-  <%= link_to "Edit this camping", edit_camping_path(@camping) %> |
-  <%= link_to "Back to campings", campings_path %>
+  <%= link_to "Edit this camping", edit_country_region_city_camping_path(@country,@region, @city,@camping) %> |
+  <%= link_to "Back to campings", country_region_city_campings_path(@region) %>
 
-  <%= button_to "Destroy this camping", @camping, method: :delete %>
+  <%= button_to "Destroy this camping", [@country, @region, @city, @camping], method: :delete %>
 </div>

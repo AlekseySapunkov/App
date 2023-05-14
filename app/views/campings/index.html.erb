@@ -6,9 +6,12 @@
   <% @campings.each do |camping| %>
     <%= render camping %>
     <p>
-      <%= link_to "Show this camping", camping %>
+      <%= link_to "Show this camping", [@country, @region, @city, camping] %>
     </p>
+    <p>
+    <%= link_to "Back to city", [@country,@region,@city] %>
+  </p>
   <% end %>
 </div>
 
-<%= link_to "New camping", new_camping_path %>
+<%= link_to "New camping", new_country_region_city_camping_path(@country) %>

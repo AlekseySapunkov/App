@@ -24,11 +24,11 @@ class CampingsController < ApplicationController
 
   # POST /campings or /campings.json
   def create
-    @camping = Camping.new(camping_params)
+    @camping = @city.campings.build(camping_params)
 
     respond_to do |format|
       if @camping.save
-        format.html { redirect_to camping_url(@camping), notice: "Camping was successfully created." }
+        format.html { redirect_to country_region_city_campings_path(@region), notice: "Camping was successfully created." }
         format.json { render :show, status: :created, location: @camping }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -41,7 +41,7 @@ class CampingsController < ApplicationController
   def update
     respond_to do |format|
       if @camping.update(camping_params)
-        format.html { redirect_to camping_url(@camping), notice: "Camping was successfully updated." }
+        format.html { redirect_to country_region_city_campings_path(@region), notice: "Camping was successfully updated." }
         format.json { render :show, status: :ok, location: @camping }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -55,7 +55,7 @@ class CampingsController < ApplicationController
     @camping.destroy
 
     respond_to do |format|
-      format.html { redirect_to campings_url, notice: "Camping was successfully destroyed." }
+      format.html { redirect_to country_region_city_campings_path(@region), notice: "Camping was successfully destroyed." }
       format.json { head :no_content }
     end
   end
@@ -77,6 +77,6 @@ class CampingsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def camping_params
-      params.require(:camping).permit(:name, :body, :country_id, :city.name, :region.name)
+      params.require(:camping).permit(:name, :body, :country_id, :city_id, :region_id)
     end
 end

@@ -5,6 +5,6 @@
 <br>
 
 <div>
-  <%= link_to "Show this camping", @camping %> |
-  <%= link_to "Back to campings", campings_path %>
+  <%= link_to "Show this camping", [@country, @region, @city, @camping] %> |
+  <%= link_to "Back to campings", country_region_city_campings_path(@region) %>
 </div>

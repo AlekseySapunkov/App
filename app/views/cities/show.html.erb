@@ -7,4 +7,14 @@
   <%= link_to "Back to cities", country_region_cities_path(@region) %>
 
   <%= button_to "Destroy this city", [@country, @region, @city], method: :delete %>
+  <h2>Campings </h2> 
+  <% for camping in @city.campings %>
+  
+  <ul>
+  
+  <li><%= link_to camping.name, [@country, @region, @city, camping] %></li>
+  
+  </ul>
+  
+  <% end %>
 </div>
