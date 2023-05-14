@@ -3,8 +3,8 @@
 <%= render @city %>
 
 <div>
-  <%= link_to "Edit this city", edit_city_path(@city) %> |
-  <%= link_to "Back to cities", cities_path %>
+  <%= link_to "Edit this city", edit_country_region_city_path(@country,@region, @city) %> |
+  <%= link_to "Back to cities", country_region_cities_path(@region) %>
 
-  <%= button_to "Destroy this city", @city, method: :delete %>
+  <%= button_to "Destroy this city", [@country, @region, @city], method: :delete %>
 </div>

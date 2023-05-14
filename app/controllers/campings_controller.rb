@@ -6,7 +6,7 @@ class CampingsController < ApplicationController
 
   # GET /campings or /campings.json
   def index
-    @campings = Camping.all
+    @campings = @city.campings
   end
 
   # GET /campings/1 or /campings/1.json
@@ -15,7 +15,7 @@ class CampingsController < ApplicationController
 
   # GET /campings/new
   def new
-    @camping = Camping.new
+    @camping = @city.campings.build
   end
 
   # GET /campings/1/edit
@@ -72,7 +72,7 @@ class CampingsController < ApplicationController
       @region = Region.find(params[:region_id])
     end
     def set_camping
-      @camping = Camping.find(params[:id])
+      @camping = @city.campings.find(params[:id])
     end
 
     # Only allow a list of trusted parameters through.

@@ -6,9 +6,9 @@
   <% @cities.each do |city| %>
     <%= render city %>
     <p>
-      <%= link_to "Show this city", city %>
+      <%= link_to "Show this city", [@country, @region, city] %>
     </p>
   <% end %>
 </div>
 
-<%= link_to "New city", new_city_path %>
+<%= link_to "New city", new_country_region_city_path(@region) %>

@@ -5,6 +5,6 @@
 <br>
 
 <div>
-  <%= link_to "Show this city", @city %> |
-  <%= link_to "Back to cities", cities_path %>
+  <%= link_to "Show this city", [@country, @region, @city] %> |
+  <%= link_to "Back to cities", country_region_cities_path(@city) %>
 </div>

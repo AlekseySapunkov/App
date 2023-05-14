@@ -1,8 +1,10 @@
 Rails.application.routes.draw do
-  resources :campings
-  resources :cities
   resources :countries do
-  resources :regions
+  resources :regions do
+    resources :cities do
+      resources :campings
+    end
+  end
   end
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
   root 'countries#index'

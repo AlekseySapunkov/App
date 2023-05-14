@@ -1,9 +1,11 @@
 class CitiesController < ApplicationController
+  before_action :get_region
+  before_action :get_country
   before_action :set_city, only: %i[ show edit update destroy ]
 
   # GET /cities or /cities.json
   def index
-    @cities = City.all
+    @cities = @region.cities
   end
 
   # GET /cities/1 or /cities/1.json
@@ -12,7 +14,7 @@ class CitiesController < ApplicationController
 
   # GET /cities/new
   def new
-    @city = City.new
+    @city = @region.cities.build
   end
 
   # GET /cities/1/edit
@@ -21,11 +23,11 @@ class CitiesController < ApplicationController
 
   # POST /cities or /cities.json
   def create
-    @city = City.new(city_params)
+    @city = @region.cities.build(city_params)
 
     respond_to do |format|
       if @city.save
-        format.html { redirect_to city_url(@city), notice: "City was successfully created." }
+        format.html { redirect_to country_region_cities_path(@region), notice: "City was successfully created." }
         format.json { render :show, status: :created, location: @city }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -38,7 +40,7 @@ class CitiesController < ApplicationController
   def update
     respond_to do |format|
       if @city.update(city_params)
-        format.html { redirect_to city_url(@city), notice: "City was successfully updated." }
+        format.html { redirect_to country_region_cities_path(@region), notice: "City was successfully updated." }
         format.json { render :show, status: :ok, location: @city }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -52,19 +54,29 @@ class CitiesController < ApplicationController
     @city.destroy
 
     respond_to do |format|
-      format.html { redirect_to cities_url, notice: "City was successfully destroyed." }
+      format.html { redirect_to country_region_cities_path(@region), notice: "City was successfully destroyed." }
       format.json { head :no_content }
     end
   end
 
   private
+  def get_region
+
+    @region = Region.find(params[:region_id])
+    
+    end
+    def get_country
+
+      @country = Country.find(params[:country_id])
+      
+      end
     # Use callbacks to share common setup or constraints between actions.
     def set_city
-      @city = City.find(params[:id])
+      @city = @region.cities.find(params[:id])
     end
 
     # Only allow a list of trusted parameters through.
     def city_params
-      params.require(:city).permit(:name, :region.name, :country.name)
+      params.require(:city).permit(:name, :region.name, :country_id)
     end
 end
