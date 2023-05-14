@@ -8,7 +8,10 @@
     <p>
       <%= link_to "Show this city", [@country, @region, city] %>
     </p>
+    <p>
+    <%= link_to "Back to region", [@country,@region] %>
+  </p>
   <% end %>
 </div>
 
-<%= link_to "New city", new_country_region_city_path(@region) %>
+<%= link_to "New city", new_country_region_city_path(@country) %>
