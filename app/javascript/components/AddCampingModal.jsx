@@ -54,7 +54,7 @@ class AddCampingModal extends React.Component {
         <Modal title="Add New Camping ..." visible={this.state.visible} onCancel={this.handleCancel} footer={null}>
           <Form ref={this.formRef} layout="vertical" onFinish={this.onFinish}>
             <Form.Item name="name" label="Name" rules={[{ required: true, message: "Please input your camping name!" }]}>
-              <Input placeholder="Input your beer brand" />
+              <Input placeholder="Input your camping name" />
             </Form.Item>
 
             <Form.Item name="body" label="Body" rules={[{ required: true, message: "Please input your camping body!" }]}>
