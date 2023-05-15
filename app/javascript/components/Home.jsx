@@ -1,23 +1,19 @@
+import { Layout } from "antd";
 import React from "react";
-import { Link } from "react-router-dom";
+import Campings from "./Campings";
+import Header from "./Header";
+
+const { Content, Footer } = Layout;
 
 export default () => (
-  <div className="vw-100 vh-100 primary-color d-flex align-items-center justify-content-center">
-    <div className="jumbotron jumbotron-fluid bg-transparent">
-      <div className="container secondary-color">
-        <h1 className="display-4">Countries</h1>
-        <p className="lead">
-          A list of countries.
-        </p>
-        <hr className="my-4" />
-        <Link
-          to="/countries"
-          className="btn btn-lg custom-button"
-          role="button"
-        >
-          View Recipes
-        </Link>
+  <Layout className="layout">
+    <Header />
+    <Content style={{ padding: "0 50px" }}>
+      <div className="site-layout-content" style={{ margin: "100px auto" }}>
+        <h1>Campings Catalog</h1>
+        <Campings />
       </div>
-    </div>
-  </div>
+    </Content>
+    <Footer style={{ textAlign: "center" }}>Honeybadger ©2020.</Footer>
+  </Layout>
 );
