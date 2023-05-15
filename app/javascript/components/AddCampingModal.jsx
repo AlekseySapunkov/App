@@ -4,7 +4,7 @@ import React from "react";
 const { Option } = Select;
 
 class AddCampingModal extends React.Component {
-  formRef = React.createRef();
+   formRef = React.createRef();
   state = {
     visible: false,
   };
