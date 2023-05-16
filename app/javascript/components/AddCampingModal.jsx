@@ -13,7 +13,7 @@ constructor(props){
   };
 }
   onFinish (values) {
-    const url = "api/v1/beers/";
+    const url = "api/v1/campings/";
     fetch(url, {
       method: "post",
       headers: {

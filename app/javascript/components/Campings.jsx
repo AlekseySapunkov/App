@@ -55,7 +55,7 @@ this.columns = [
   }
 
   loadCampings () {
-    const url = "api/v1/beers/index";
+    const url = "//index";
     fetch(url)
       .then((data) => {
         if (data.ok) {
@@ -89,7 +89,7 @@ this.columns = [
   };
 
   deleteCampings (id)  {
-    const url = `api/v1/beers/${id}`;
+    const url = `api/v1/campings/${id}`;
 
     fetch(url, {
       method: "delete",
