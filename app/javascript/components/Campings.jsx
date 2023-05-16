@@ -3,7 +3,9 @@ import React from "react";
 import AddCampingModal from "./AddCampingModal";
 
 class Campings extends React.Component {
-  columns = [
+  constructor(props){
+    super(props)
+this.columns = [
     {
       title: "Name",
       dataIndex: "name",
@@ -42,15 +44,17 @@ class Campings extends React.Component {
     },
   ];
 
-  state = {
+  this.state = {
     campings: [],
   };
+  }
+  
 
   componentDidMount() {
     this.loadCampings();
   }
 
-  loadCampings = () => {
+  loadCampings () {
     const url = "api/v1/beers/index";
     fetch(url)
       .then((data) => {
@@ -79,12 +83,12 @@ class Campings extends React.Component {
       .catch((err) => message.error("Error: " + err));
   };
 
-  reloadCampings = () => {
+  reloadCampings () {
     this.setState({ campings: [] });
     this.loadCampings();
   };
 
-  deleteCampings = (id) => {
+  deleteCampings (id)  {
     const url = `api/v1/beers/${id}`;
 
     fetch(url, {
@@ -102,11 +106,11 @@ class Campings extends React.Component {
 
   render() {
     return (
-      <>
+      <React.Fragment>
         <Table className="table-striped-rows" dataSource={this.state.campings} columns={this.columns} pagination={{ pageSize: 5 }} />
 
         <AddCampingModal reloadCampings={this.reloadCampings} />
-      </>
+      </React.Fragment>
     );
   }
 }

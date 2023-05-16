@@ -4,12 +4,15 @@ import React from "react";
 const { Option } = Select;
 
 class AddCampingModal extends React.Component {
-   formRef = React.createRef();
-  state = {
+
+constructor(props){
+  super(props);
+  this.formRef = React.createRef();
+  this.state = {
     visible: false,
   };
-
-  onFinish = (values) => {
+}
+  onFinish (values) {
     const url = "api/v1/beers/";
     fetch(url, {
       method: "post",
@@ -32,13 +35,13 @@ class AddCampingModal extends React.Component {
       .catch((err) => console.error("Error: " + err));
   };
 
-  showModal = () => {
+  showModal () {
     this.setState({
       visible: true,
     });
   };
 
-  handleCancel = () => {
+  handleCancel ()  {
     this.setState({
       visible: false,
     });
@@ -46,7 +49,7 @@ class AddCampingModal extends React.Component {
 
   render() {
     return (
-      <>
+      <React.Fragement>
         <Button type="primary" onClick={this.showModal}>
           Create New +
         </Button>
@@ -91,7 +94,7 @@ class AddCampingModal extends React.Component {
             </Form.Item>
           </Form>
         </Modal>
-      </>
+      </React.Fragement>
     );
   }
 }

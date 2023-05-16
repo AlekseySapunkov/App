@@ -1,7 +1,6 @@
 import React from "react";
-import Routes from "../routes/index";
-import "antd/dist/antd.css";
+import Routes from "../routes";
 
 export default () => {
-return(<>{Routes}</>)
+return(<React.Fragement>{Routes}</React.Fragement>)
 }
