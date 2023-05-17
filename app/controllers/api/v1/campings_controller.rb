@@ -1,5 +1,4 @@
 class Api::V1::CampingsController < ApplicationController
-    class Api::V1::BeersController < ApplicationController
         before_action :set_camping, only: [:show, :edit, :update, :destroy]
       
         # GET /campings
